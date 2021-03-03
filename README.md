@@ -1,2 +1,1 @@
-# translator-app
- 
+# Translator App
