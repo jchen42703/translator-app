@@ -1,41 +1,25 @@
 import React, { useEffect, useState } from "react";
-// import debounce from "lodash/debounce";
 
 const TranslatedDisplay = (props) => {
-  // function translateContent(content) {
-  //   const translated = debounce((content) => {
-  //     fetch("/translate/", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         foreign: content,
-  //       }),
-  //       headers: new Headers({
-  //         "Content-Type": "application/json",
-  //       }),
-  //     });
-  //   }, 1000);
-  //   return translated;
-  // }
-  function translateContent(content) {
-    const translated = fetch("/translate/", {
-      method: "POST",
-      body: JSON.stringify({
-        foreign: content,
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    });
-    console.log(`translateContent: ${translated}`);
-    return translated.text;
-  }
-
-  const [translatedText, setTranslatedText] = useState(
-    translateContent(props.text)
-  );
+  const [translatedText, setTranslatedText] = useState("");
 
   useEffect(() => {
-    setTranslatedText(translateContent(props.text));
+    const setUpdated = async () => {
+      const result = await fetch("/translate/", {
+        method: "POST",
+        body: JSON.stringify({
+          foreign: props.text,
+        }),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      }).then((res) => res.json());
+
+      console.log("result of translateContent: " + result.translated);
+      setTranslatedText(result.translated);
+    };
+
+    setUpdated();
   }, [props.text]);
 
   return (
