@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const { translate } = require("google-translate-api-browser");
 // const readline = require("readline");
-app.use(bodyParser.json());
+
 
 app.post("/translate/", async (req, res) => {
   // console.log(
