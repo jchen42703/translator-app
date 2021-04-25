@@ -1,30 +1,43 @@
 import React, { useEffect, useState } from "react";
+import store from "../redux/store";
+import "../styles/css/components/TranslatedDisplay.css";
 
 const TranslatedDisplay = (props) => {
+  const [toText, setToText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
 
+  /**
+   * Callback that set the current store updated text to translate
+   */
+  function handleChange() {
+    setToText(store.getState().toText);
+  }
+
+  store.subscribe(handleChange);
+
   useEffect(() => {
+    console.log("text: " + toText);
     const setUpdated = async () => {
       const result = await fetch("/translate/", {
         method: "POST",
         body: JSON.stringify({
-          foreign: props.text,
+          foreign: toText,
         }),
         headers: new Headers({
           "Content-Type": "application/json",
         }),
       }).then((res) => res.json());
 
-      console.log("result of translateContent: " + result.translated);
       setTranslatedText(result.translated);
     };
 
     setUpdated();
-  }, [props.text]);
+  }, [toText]);
 
   return (
-    <div>
-      <p>{translatedText}</p>
+    <div class="TranslatedDisplay">
+      <h2>Result:</h2>
+      <span>{translatedText}</span>
     </div>
   );
 };

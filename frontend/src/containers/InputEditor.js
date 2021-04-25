@@ -1,7 +1,8 @@
 import React from "react";
 import { EditorState, Editor } from "draft-js";
-import "draft-js/dist/Draft.css";
-import TranslatedDisplay from "./TranslatedDisplay.js";
+import { connect } from "react-redux";
+import { toTextUpdate } from "../redux/toText.actions";
+import "../styles/css/components/InputEditor.css";
 
 class InputEditor extends React.Component {
   constructor(props) {
@@ -17,16 +18,18 @@ class InputEditor extends React.Component {
       editorState: editorState,
       toText: editorState.getCurrentContent().getPlainText(),
     });
+    // dispatches the updated state to the store
+    this.props.dispatch(toTextUpdate(this.state.toText));
   };
 
   render() {
     return (
-      <div>
+      <div class="InputEditor">
+        <h2>Type below:</h2>
         <Editor editorState={this.state.editorState} onChange={this.onChange} />
-        <TranslatedDisplay text={this.state.toText}></TranslatedDisplay>
       </div>
     );
   }
 }
 
-export default InputEditor;
+export default connect()(InputEditor);
