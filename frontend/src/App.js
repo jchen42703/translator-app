@@ -6,6 +6,7 @@ function App() {
   return (
     <Provider store={store}>
       <div>
+        <h1>Basic UI for Translation (Dev)</h1>
         <Translator></Translator>
       </div>
     </Provider>
