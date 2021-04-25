@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import store from "../redux/store";
-// import { useSelector } from "react-redux";
+import "../styles/css/components/TranslatedDisplay.css";
 
 const TranslatedDisplay = (props) => {
   const [toText, setToText] = useState("");
@@ -35,8 +35,9 @@ const TranslatedDisplay = (props) => {
   }, [toText]);
 
   return (
-    <div>
-      <p>{translatedText}</p>
+    <div class="TranslatedDisplay">
+      <h2>Result:</h2>
+      <span>{translatedText}</span>
     </div>
   );
 };
