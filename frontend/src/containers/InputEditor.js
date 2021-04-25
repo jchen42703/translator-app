@@ -1,8 +1,8 @@
 import React from "react";
 import { EditorState, Editor } from "draft-js";
-import "draft-js/dist/Draft.css";
 import { connect } from "react-redux";
 import { toTextUpdate } from "../redux/toText.actions";
+import "../styles/css/components/InputEditor.css";
 
 class InputEditor extends React.Component {
   constructor(props) {
@@ -24,7 +24,8 @@ class InputEditor extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="InputEditor">
+        <h2>Type below:</h2>
         <Editor editorState={this.state.editorState} onChange={this.onChange} />
       </div>
     );
