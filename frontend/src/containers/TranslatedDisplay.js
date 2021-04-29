@@ -37,7 +37,8 @@ const TranslatedDisplay = (props) => {
   return (
     <div class="TranslatedDisplay">
       <h2>Result:</h2>
-      <span>{translatedText}</span>
+      {/* styling preserves new lines */}
+      <div style={{ "white-space": "pre-line" }}>{translatedText}</div>
     </div>
   );
 };
