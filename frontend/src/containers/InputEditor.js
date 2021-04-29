@@ -24,7 +24,7 @@ class InputEditor extends React.Component {
 
   render() {
     return (
-      <div class="InputEditor">
+      <div className="InputEditor">
         <h2>Type below:</h2>
         <Editor editorState={this.state.editorState} onChange={this.onChange} />
       </div>
