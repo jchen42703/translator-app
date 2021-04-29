@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import store from "../redux/store";
 import "../styles/css/components/TranslatedDisplay.css";
+import "../styles/css/abstracts/global.css";
 
 const TranslatedDisplay = (props) => {
   const [toText, setToText] = useState("");
@@ -35,10 +36,10 @@ const TranslatedDisplay = (props) => {
   }, [toText]);
 
   return (
-    <div class="TranslatedDisplay">
+    <div className="TranslatedDisplay">
       <h2>Result:</h2>
       {/* styling preserves new lines */}
-      <div style={{ "white-space": "pre-line" }}>{translatedText}</div>
+      <div className="preserve-white-space">{translatedText}</div>
     </div>
   );
 };
