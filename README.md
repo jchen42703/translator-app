@@ -41,10 +41,8 @@ node-sass src/styles/scss -o src/styles/css --output-style compressed
 
 ## How does it work?
 
-The components use `react`, `redux`, and `react-redux` to complete the translation process.
+`Translator` encapsulates `InputEditor` and `TranslatedDisplay` and `Translator` passes its `editorState` as a prop to `InputEditor` and `TranslatedDisplay`.
 
-`Translator` encapsulates `InputEditor` and `TranslatedDisplay`.
-
-1. `InputEditor` dispatches the updated text to the store as the `toText` state.
-2. Then, `TranslatedDisplay` sets its own `toText` property to the updated text on store state change (because `TranslatedDisplay` is subscribed to the store.)
+1. `InputEditor` encapsulates `Editor` (`draft-js`) and passes the `Translator`'s `editorState` and `setEditorState` as props to `Editor`.
+2. Then, `TranslatedDisplay` sets its own `toText` property to the updated prop text.
 3. `TranslatedDisplay` takes its new `toText`, sends a POST request (as a json with that text), and displays the retrieved response text (aka the translated text).
