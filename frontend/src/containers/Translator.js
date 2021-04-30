@@ -1,13 +1,21 @@
 import React from "react";
+import { EditorState } from "draft-js";
 import InputEditor from "./InputEditor";
 import TranslatedDisplay from "./TranslatedDisplay";
 import "../styles/css/components/wrappers.css";
 
 const Translator = (props) => {
+  const [editorState, setEditorState] = React.useState(() =>
+    EditorState.createEmpty()
+  );
+
   return (
     <div className="wrapper">
-      <InputEditor></InputEditor>
-      <TranslatedDisplay></TranslatedDisplay>
+      <InputEditor
+        editorState={editorState}
+        setEditorState={setEditorState}
+      ></InputEditor>
+      <TranslatedDisplay editorState={editorState}></TranslatedDisplay>
     </div>
   );
 };
