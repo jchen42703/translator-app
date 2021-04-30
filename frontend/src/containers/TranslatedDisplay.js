@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import store from "../redux/store";
 import "../styles/css/components/TranslatedDisplay.css";
 import "../styles/css/abstracts/global.css";
 
@@ -7,14 +6,9 @@ const TranslatedDisplay = (props) => {
   const [toText, setToText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
 
-  /**
-   * Callback that set the current store updated text to translate
-   */
-  function handleChange() {
-    setToText(store.getState().toText);
-  }
-
-  store.subscribe(handleChange);
+  useEffect(() => {
+    setToText(props.editorState.getCurrentContent().getPlainText());
+  }, [props.editorState.getCurrentContent().getPlainText()]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     console.log("text: " + toText);
