@@ -16,7 +16,7 @@
 
 This loads up the proxy server at PORT=5000 (proxy to 3000).
 
-1. Get the frontend server running:
+2. Get the frontend server running:
 
    ```
    cd frontend
@@ -25,6 +25,21 @@ This loads up the proxy server at PORT=5000 (proxy to 3000).
    ```
 
    This loads up the main app at PORT=3000.
+
+## Compiling SCSS
+
+For a one-time compile:
+
+```
+// In ~/translator-app>
+sass --no-source-map --style=compressed frontend/src/styles/scss/styles.scss frontend/src/styles/css/styles.css
+```
+
+For dev (auto-updates):
+
+```
+sass --no-source-map --style=compressed --watch frontend/src/styles/scss:frontend/src/styles/css
+```
 
 To convert the scss to css:
 
