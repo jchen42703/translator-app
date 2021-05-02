@@ -1,9 +1,9 @@
-const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const { translate } = require("google-translate-api-browser");
-// const readline = require("readline");
-app.use(express.json())
+const translateWord = require("./src/translate");
+
+app.use(express.json());
 
 app.post("/translate/", async (req, res) => {
   // console.log(
@@ -13,6 +13,14 @@ app.post("/translate/", async (req, res) => {
   // console.log("translated text: " + translatedText.text);
   res.send({ translated: translatedText.text });
   // res.end("Finished translating");
+});
+
+// return translated word
+app.post("/translateWord/", (req, res) => {
+  const sendJson = translateWord(req.body.word);
+  console.log("The word to translate is: " + req.body.word);
+  console.log(sendJson);
+  res.send(sendJson);
 });
 
 const PORT = process.env.PORT || 5000;
