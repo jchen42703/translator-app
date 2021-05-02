@@ -6,6 +6,10 @@ const cedict = require("./cedict.json");
  * @returns 
  */
 function translateWord(word) {
+    // if word is null then we just return 
+    if (word == null) {
+        return { "english": "Null input given.", "pinyin": "Null input given." };
+    }
     for (var i = 0; i < cedict.length; i++) {
         if (word == cedict[i].traditional || word == cedict[i].simplfied) {
             // console.log("The word found is" + word);
@@ -17,11 +21,7 @@ function translateWord(word) {
         }
 
     }
-    if (word == null) {
-        return "Null words are not proper input";
-    }
     return translatedJson;
 }
-
 
 module.exports = translateWord;
