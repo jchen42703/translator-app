@@ -10,15 +10,17 @@ app.post("/translate/", async (req, res) => {
   console.log(
     `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
   );
+  // Catch-all guard clause
+  if (req.body.foreign == null) {
+    res.send({
+      translated:
+        "API does not accept null as a proper 'foreign' input. This is most likely not the translated text.",
+    });
+    return;
+  }
 
   switch (req.body.devMode) {
     case "regular":
-      if (req.body.foreign == null) {
-        res
-          .status(400)
-          .send("API does not accept null as a proper 'foreign' input.");
-      }
-
       let translatedText = await translate(req.body.foreign, { to: "en" });
       console.log("translated text: " + translatedText.text);
       res.send({ translated: translatedText.text });
@@ -27,13 +29,6 @@ app.post("/translate/", async (req, res) => {
     // longer output that preserves new lines by prepending the text to the 1st paragraph
     case "pre":
       console.log("You are using the dev api...");
-
-      if (req.body.foreign == null) {
-        res
-          .status(400)
-          .send("API does not accept null as a proper 'foreign' input.");
-      }
-
       const noLineBreaksStr = req.body.foreign.replace(/\r?\n|\r/g, "");
 
       const sendJson = {
@@ -43,10 +38,10 @@ app.post("/translate/", async (req, res) => {
       res.send(sendJson);
       break;
     default:
-      // fail with no devMode
-      res
-        .status(400)
-        .send("Please specify a correct devMode in the POST request.");
+      res.send({
+        translated:
+          "Please specify a correct devMode in the POST request. This is most likely not translated text.",
+      });
       break;
   }
 });
