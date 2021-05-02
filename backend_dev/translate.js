@@ -17,6 +17,9 @@ function translateWord(word) {
         }
 
     }
+    if (word == null) {
+        return "Null words are not proper input";
+    }
     return translatedJson;
 }
 

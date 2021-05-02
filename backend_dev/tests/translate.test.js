@@ -1,4 +1,4 @@
-const translateWord = require("./translate");
+const translateWord = require("../translate");
 
 // testing when there is number in chinese word
 test('Given word: 2019冠狀病毒病 Tranlsation: COVID-19, the coronavirus disease identified in 2019', () => {
