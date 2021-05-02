@@ -28,11 +28,13 @@ app.post("/translate/", async (req, res) => {
       };
       console.log(`Sending json.translated ${sendJson.translated}`);
       res.send(sendJson);
+      break;
     default:
       // fail with no devMode
       res
         .status(400)
         .send("Please specify a correct devMode in the POST request.");
+      break;
   }
 });
 
