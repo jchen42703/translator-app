@@ -6,17 +6,21 @@
 
    ```
    cd backend
-   yarn add .
-   nodemon index.js
+   yarn install
+   yarn startDev
    ```
 
-   This loads up the proxy server at PORT=5000 (proxy to 3000).
+   (as of yarn v1.22.5, not the latest `berry` version)
 
-2. Get the frontend server running:
+   - `jest` and `nodemon` are a dev dependencies.
+
+This loads up the proxy server at PORT=5000 (proxy to 3000).
+
+1. Get the frontend server running:
 
    ```
    cd frontend
-   yarn add .
+   yarn install
    yarn start
    ```
 
