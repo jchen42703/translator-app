@@ -2,7 +2,7 @@ import React from "react";
 import { EditorState } from "draft-js";
 import InputEditor from "./InputEditor";
 import TranslatedDisplay from "./TranslatedDisplay";
-import "../styles/css/components/wrappers.css";
+import "../styles/css/styles.css";
 
 const Translator = (props) => {
   const [editorState, setEditorState] = React.useState(() =>

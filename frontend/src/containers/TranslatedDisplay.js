@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DisplayLine } from "./DisplayLine";
-import "../styles/css/components/TranslatedDisplay.css";
+import "../styles/css/styles.css";
 
 const TranslatedDisplay = (props) => {
   const [toText, setToText] = useState("");

@@ -1,6 +1,6 @@
 import React from "react";
 import { EditorBlock } from "draft-js";
-import "../styles/css/components/LineGutter.css";
+import "../styles/css/styles.css";
 
 class LineGutter extends React.Component {
   render() {
