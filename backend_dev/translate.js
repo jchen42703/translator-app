@@ -10,7 +10,7 @@ function translateWord(word) {
     if (word == null) {
         return { "english": "Null input given.", "pinyin": "Null input given." };
     }
-    // else check if traditonal or simplfied matches our word and return that
+    // else check if traditonal or simplfied matches our word and return thatcd 
     for (var i = 0; i < cedict.length; i++) {
         if (word == cedict[i].traditional || word == cedict[i].simplfied) {
             return { "english": cedict[i].english, "pinyin": cedict[i].pinyin };
