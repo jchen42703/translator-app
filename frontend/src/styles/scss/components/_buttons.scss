@@ -1,5 +1,11 @@
+@import "../abstracts/colors";
+
 .button-no-fold {
+  color: $gutter-color-secondary;
 }
 
 .button-fold {
+  color: $gutter-color-secondary;
+  transform: rotate(-90deg);
+  transition: transform 1s ease-in;
 }
