@@ -40,10 +40,14 @@ app.post("/translate/", async (req, res) => {
       res.send(sendJson);
       break;
     default:
-      res.send({
-        translated:
-          "Please specify a correct devMode in the POST request. This is most likely not translated text.",
-      });
+      console.log("You are using the dev api...");
+      const noLineBreaksStr = req.body.foreign.replace(/\r?\n|\r/g, "");
+
+      const sendJson = {
+        translated: noLineBreaksStr + noLineBreaksStr + req.body.foreign,
+      };
+      console.log(`Sending json.translated ${sendJson.translated}`);
+      res.send(sendJson);
       break;
   }
 });
