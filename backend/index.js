@@ -15,7 +15,7 @@ app.post("/translate/", async (req, res) => {
       translated:
         "API does not accept null as a proper 'foreign' input. This is most likely not the translated text.",
     });
-    break;
+    return;
   }
 
   let translatedText = await translate(req.body.foreign, { to: "en" });
