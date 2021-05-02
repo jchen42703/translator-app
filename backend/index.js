@@ -9,6 +9,12 @@ app.post("/translate/", async (req, res) => {
   // console.log(
   //   `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
   // );
+  if (req.body.foreign == null) {
+    res
+      .status(400)
+      .send("API does not accept null as a proper 'foreign' input.");
+  }
+
   let translatedText = await translate(req.body.foreign, { to: "en" });
   // console.log("translated text: " + translatedText.text);
   res.send({ translated: translatedText.text });

@@ -7,22 +7,35 @@ const app = express();
 app.use(express.json());
 
 app.post("/translate/", async (req, res) => {
+  console.log(
+    `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
+  );
+
   switch (req.body.devMode) {
     case "regular":
-      // console.log(
-      //   `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
-      // );
+      if (req.body.foreign == null) {
+        res
+          .status(400)
+          .send("API does not accept null as a proper 'foreign' input.");
+      }
+
       let translatedText = await translate(req.body.foreign, { to: "en" });
       console.log("translated text: " + translatedText.text);
       res.send({ translated: translatedText.text });
       break;
+
     // longer output that preserves new lines by prepending the text to the 1st paragraph
     case "pre":
       console.log("You are using the dev api...");
+
+      if (req.body.foreign == null) {
+        res
+          .status(400)
+          .send("API does not accept null as a proper 'foreign' input.");
+      }
+
       const noLineBreaksStr = req.body.foreign.replace(/\r?\n|\r/g, "");
-      // console.log(
-      //   `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
-      // );
+
       const sendJson = {
         translated: noLineBreaksStr + noLineBreaksStr + req.body.foreign,
       };
