@@ -24,3 +24,11 @@ test('Given word: Hello Tranlsation: Not found since it is english', () => {
     });
 });
 
+// testing null word
+test('Given word: null Translation: null', () => {
+    expect(translateWord(null)).toStrictEqual({
+        "english": "Null input given.",
+        "pinyin": "Null input given."
+    });
+});
+
