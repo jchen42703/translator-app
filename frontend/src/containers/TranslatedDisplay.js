@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { DisplayLine } from "./DisplayLine";
 import "../styles/css/components/TranslatedDisplay.css";
-import "../styles/css/abstracts/global.css";
 
 const TranslatedDisplay = (props) => {
   const [toText, setToText] = useState("");
@@ -32,8 +32,7 @@ const TranslatedDisplay = (props) => {
   return (
     <div className="TranslatedDisplay">
       <h2>Result:</h2>
-      {/* styling preserves new lines */}
-      <div className="preserve-white-space">{translatedText}</div>
+      <DisplayLine text={translatedText}></DisplayLine>
     </div>
   );
 };
