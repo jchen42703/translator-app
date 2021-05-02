@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
+    "startDev": "nodemon index.dev.js",
+    "build": "node index.js",
     "test": "jest"
   },
   "author": "Joseph Chen",
@@ -11,5 +14,9 @@
   "dependencies": {
     "express": "^4.17.1",
     "google-translate-api-browser": "^1.1.71"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
   }
 }
