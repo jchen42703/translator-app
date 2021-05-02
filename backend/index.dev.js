@@ -6,6 +6,9 @@ const app = express();
 
 app.use(express.json());
 
+// Change this when you need to for dev but don't commit change this line!!
+const devMode = "pre";
+
 app.post("/translate/", async (req, res) => {
   console.log(
     `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
@@ -21,15 +24,16 @@ app.post("/translate/", async (req, res) => {
   }
 
   // Produces the translations based on the devMode in the POST request
-  switch (req.body.devMode) {
-    case "real":
+  switch (devMode) {
+    case "real": {
       let translatedText = await translate(req.body.foreign, { to: "en" });
       console.log("translated text: " + translatedText.text);
       res.send({ translated: translatedText.text });
       break;
+    }
 
     // longer output that preserves new lines by prepending the text to the 1st paragraph
-    case "pre":
+    case "pre": {
       console.log("You are using the dev api...");
       const noLineBreaksStr = req.body.foreign.replace(/\r?\n|\r/g, "");
 
@@ -39,12 +43,15 @@ app.post("/translate/", async (req, res) => {
       console.log(`Sending json.translated ${sendJson.translated}`);
       res.send(sendJson);
       break;
-    default:
+    }
+
+    default: {
       res.send({
         translated:
           "Please specify a correct devMode in the POST request. This is most likely not translated text.",
       });
       break;
+    }
   }
 });
 
