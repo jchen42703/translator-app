@@ -10,6 +10,7 @@ app.post("/translate/", async (req, res) => {
   console.log(
     `Foreign: ${req.body.foreign}, typeof: ${typeof req.body.foreign}`
   );
+
   // Catch-all guard clause
   if (req.body.foreign == null) {
     res.send({
@@ -19,8 +20,9 @@ app.post("/translate/", async (req, res) => {
     return;
   }
 
+  // Produces the translations based on the devMode in the POST request
   switch (req.body.devMode) {
-    case "regular":
+    case "real":
       let translatedText = await translate(req.body.foreign, { to: "en" });
       console.log("translated text: " + translatedText.text);
       res.send({ translated: translatedText.text });
