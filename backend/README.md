@@ -1,6 +1,8 @@
 # Backend Server
 
-## Get Started
+# Get Started
+
+## Setup
 
 ```
 yarn install
@@ -8,6 +10,37 @@ yarn startDev
 ```
 
 - Note: `jest` and `nodemon` are dev dependencies.
+
+## What should the requests look like?
+
+For the development server (`yarn startDev`):
+
+**`POST` to either:**
+
+- `http://localhost:5000/translate`
+
+  - You must specify the `foreign` text to translate and the development mode `devMode`:
+
+    ```
+    // Real translation
+    {
+      "foreign": "四位陆地神仙联手一击",
+      "devMode": "real"
+    }
+    ```
+
+    OR
+
+    ```
+    // Input text but duplicated. (Preserves new lines).
+    {
+      "foreign": "dadada\ndasdadasdd",
+      "devMode": "pre"
+    }
+    ```
+
+- `http://localhost:5000/translateWord`
+  - Works the same as in production
 
 ## Dev Commands
 
