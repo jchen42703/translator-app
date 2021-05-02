@@ -1,4 +1,4 @@
-const cedict = require("../cedict.json");
+const cedict = require("./cedict.json");
 
 /**
  *
