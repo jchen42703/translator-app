@@ -10,18 +10,13 @@ function translateWord(word) {
     if (word == null) {
         return { "english": "Null input given.", "pinyin": "Null input given." };
     }
+    // else check if traditonal or simplfied matches our word and return that
     for (var i = 0; i < cedict.length; i++) {
         if (word == cedict[i].traditional || word == cedict[i].simplfied) {
-            // console.log("The word found is" + word);
-            var translatedJson = { "english": cedict[i].english, "pinyin": cedict[i].pinyin };
-            break;
+            return { "english": cedict[i].english, "pinyin": cedict[i].pinyin };
         }
-        else {
-            var translatedJson = { "english": "Not found.", "pinyin": "Not found." };
-        }
-
     }
-    return translatedJson;
+    return { "english": "Not found.", "pinyin": "Not found." };
 }
 
 module.exports = translateWord;
