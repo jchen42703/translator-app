@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DisplayLine } from "./DisplayLine";
+import { Display } from "./Display";
 import "../styles/css/styles.css";
 
 const TranslatedDisplay = (props) => {
@@ -32,7 +32,7 @@ const TranslatedDisplay = (props) => {
   return (
     <div className="TranslatedDisplay">
       <h2>Result:</h2>
-      <DisplayLine text={translatedText}></DisplayLine>
+      <Display text={translatedText}></Display>
     </div>
   );
 };
