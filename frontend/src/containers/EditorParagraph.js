@@ -2,7 +2,10 @@ import React from "react";
 import { EditorBlock } from "draft-js";
 import "../styles/css/styles.css";
 
-class LineGutter extends React.Component {
+/**
+ * Represents a paragraph in the editor. Each paragraph is separated by a single new line.
+ */
+class EditorParagraph extends React.Component {
   render() {
     const { block, contentState } = this.props;
     const lineNumber =
@@ -20,4 +23,4 @@ class LineGutter extends React.Component {
   }
 }
 
-export { LineGutter };
+export { EditorParagraph };

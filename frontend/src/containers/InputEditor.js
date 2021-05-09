@@ -1,10 +1,10 @@
 import React from "react";
 import { Editor } from "draft-js";
-import { LineGutter } from "./LineGutter";
+import { EditorParagraph } from "./EditorParagraph";
 import "../styles/css/styles.css";
 
 const blockRendererFn = () => ({
-  component: LineGutter,
+  component: EditorParagraph,
 });
 
 const InputEditor = (props) => {
