@@ -1,5 +1,5 @@
 import React from "react";
-import { splitIntoParagraphs } from "../utils/splitIntoParagraphs";
+import splitIntoParagraphs from "../utils/splitIntoParagraphs";
 
 /**
  * Component that displays the actual text.
@@ -46,5 +46,5 @@ export const Display = (props) => {
       ></DisplayParagraph>
     );
   });
-  return <ul>{blocksList}</ul>;
+  return <ul style={{ padding: 0 }}>{blocksList}</ul>;
 };
