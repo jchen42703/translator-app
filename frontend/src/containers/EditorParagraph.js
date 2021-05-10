@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { EditorBlock } from "draft-js";
 import { FoldButton } from "./FoldBlockButton";
 import "../styles/css/styles.css";
