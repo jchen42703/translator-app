@@ -1,13 +1,34 @@
 @import "../abstracts/colors";
 
-.button-no-fold img {
-  color: $gutter-color-secondary;
-  transform: rotate(0);
-  transition: transform 0.25s linear;
+@mixin foldButton {
+  background-color: transparent;
+  border: 0;
+  padding: 0 2%;
+  height: 100%;
+
+  :hover {
+    background-color: $gutter-color-secondary;
+  }
+  img {
+    position: relative;
+    top: 0;
+    height: $default-text-size;
+    width: $default-text-size;
+  }
 }
 
-.button-fold img {
-  color: $gutter-color-secondary;
-  transform: rotate(90deg);
-  transition: transform 0.25s linear;
+.button-no-fold {
+  @include foldButton;
+  img {
+    transform: rotate(0);
+    transition: transform 0.25s linear;
+  }
+}
+
+.button-fold {
+  @include foldButton;
+  img {
+    transform: rotate(90deg);
+    transition: transform 0.25s linear;
+  }
 }
