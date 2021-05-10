@@ -20,7 +20,7 @@ export const FoldButton = (props) => {
         className={fold ? "button-fold" : "button-no-fold"}
         onClick={handleClick}
       >
-        <img src={foldSVG} height="50px" width="50px" alt="" />
+        <img src={foldSVG} alt="" />
       </button>
     </React.Fragment>
   );
