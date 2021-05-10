@@ -2,31 +2,30 @@
 
 @mixin foldButton {
   background-color: transparent;
+  background-image: url("../../media/fold-arrow.svg");
+  background-repeat: no-repeat;
   border: 0;
-  padding: 0 2%;
-  height: 100%;
+  height: $default-text-size;
+  width: $default-text-size;
 
   :hover {
     background-color: $gutter-color-secondary;
-  }
-  img {
-    height: $default-text-size;
-    width: $default-text-size;
   }
 }
 
 .button-no-fold {
   @include foldButton;
-  img {
-    transform: rotate(0);
-    transition: transform 0.25s linear;
-  }
+  transform: rotate(0);
+  transition: transform 0.25s linear;
 }
 
 .button-fold {
   @include foldButton;
-  img {
-    transform: rotate(90deg);
-    transition: transform 0.25s linear;
-  }
+  transform: rotate(90deg);
+  transition: transform 0.25s linear;
+}
+
+// adds padding/margins to rotated button
+.rotate-button-wrapper {
+  margin: 0 2%;
 }
