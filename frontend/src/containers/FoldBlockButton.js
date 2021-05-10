@@ -7,17 +7,14 @@ import "../styles/css/styles.css";
  * @param {*} props should contain the key corresponding to the paragraph number
  */
 export const FoldButton = (props) => {
-  // Whether or not to fold the corresponding block
-  const [fold, setFold] = useState(false);
-
   const handleClick = () => {
-    setFold(!fold);
+    props.setCollapse(!props.collapse);
   };
 
   return (
     <div className="rotate-button-wrapper">
       <button
-        className={fold ? "button-fold" : "button-no-fold"}
+        className={props.collapse ? "button-fold" : "button-no-fold"}
         onClick={handleClick}
       ></button>
     </div>
