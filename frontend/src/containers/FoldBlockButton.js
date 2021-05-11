@@ -14,7 +14,11 @@ export const FoldButton = (props) => {
   };
 
   return (
-    <div className="rotate-button-wrapper" contentEditable={!props.collapse}>
+    <div
+      className="rotate-button-wrapper"
+      contentEditable={!props.collapse}
+      suppressContentEditableWarning={true}
+    >
       <button
         className={props.collapse ? "button-fold" : "button-no-fold"}
         onClick={handleClick}
