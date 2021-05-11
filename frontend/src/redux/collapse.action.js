@@ -4,7 +4,7 @@
  * @returns an action of type TOGGLE_ON
  */
 const collapseToggleOn = (payload) => {
-  return { type: "TOGGLE_ON", pIdx: payload };
+  return { type: "TOGGLE_ON", collapseIdx: payload };
 };
 
 /**
@@ -13,7 +13,7 @@ const collapseToggleOn = (payload) => {
  * @returns an action of type TOGGLE_ON
  */
 const collapseToggleOff = (payload) => {
-  return { type: "TOGGLE_OFF", pIdx: payload };
+  return { type: "TOGGLE_OFF", uncollapseIdx: payload };
 };
 
 export { collapseToggleOn, collapseToggleOff };
