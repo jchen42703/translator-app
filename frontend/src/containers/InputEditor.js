@@ -1,6 +1,6 @@
 import React from "react";
 import { Editor } from "draft-js";
-import { EditorParagraph } from "./EditorParagraph";
+import EditorParagraph from "./EditorParagraph";
 import "../styles/css/styles.css";
 
 const blockRendererFn = () => ({
