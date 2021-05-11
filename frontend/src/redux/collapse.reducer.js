@@ -8,9 +8,8 @@ function collapseReducer(state, action) {
   switch (action.type) {
     // adds the index of the collapsed paragarph to the global state
     case "TOGGLE_ON": {
-      state.collapsedIdxList.push(action.collapseIdx);
       return {
-        collapsedIdxList: state.collapsedIdxList,
+        collapsedIdxList: [...state.collapsedIdxList, action.collapseIdx],
       };
     }
 
