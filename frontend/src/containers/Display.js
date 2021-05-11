@@ -29,10 +29,10 @@ export const DisplayParagraph = (props) => {
 
   useEffect(() => {
     // Is paragraphNumber in list?
-    const mustCollapse = collapsedIdxList.includes(props.paragraphNumber);
+    const mustCollapse = collapsedIdxList.includes(props.lineNumber);
     // If yes, make sure it is collapsed. If no, make sure it is uncollapsed.
     setCollapse(mustCollapse);
-  }, [collapsedIdxList, props.paragraphNumber, collapse]);
+  }, [collapsedIdxList, props.lineNumber, collapse]);
 
   return (
     <div className="line" data-line-number={props.lineNumber}>
@@ -41,6 +41,7 @@ export const DisplayParagraph = (props) => {
           <FoldButton
             collapse={collapse}
             setCollapse={setCollapse}
+            paragraphNumber={props.lineNumber}
           ></FoldButton>
           <div className={collapse ? "collapsedText" : "textBlock"}>
             <DisplayBlock text={props.text}></DisplayBlock>
