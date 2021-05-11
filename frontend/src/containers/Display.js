@@ -57,5 +57,5 @@ export const Display = (props) => {
       ></DisplayParagraph>
     );
   });
-  return <ul style={{ padding: 0 }}>{blocksList}</ul>;
+  return <div>{blocksList}</div>;
 };
