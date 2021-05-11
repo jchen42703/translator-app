@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { EditorBlock } from "draft-js";
 import { FoldButton } from "./FoldBlockButton";
 import "../styles/css/styles.css";
@@ -20,6 +21,13 @@ const EditorParagraph = (props) => {
       .toList()
       .findIndex((item) => item.key === block.key) + 1;
 
+  useEffect(() => {
+    // Is paragraphNumber in list?
+    const mustCollapse = props.collapsedIdxList.includes(paragraphNumber);
+    // If yes, make sure it is collapsed. If no, make sure it is uncollapsed.
+    setCollapse(mustCollapse);
+  }, [props.collapsedIdxList, paragraphNumber, collapse]);
+
   return (
     <div className="line" data-line-number={paragraphNumber}>
       <div className="line-text">
@@ -27,6 +35,7 @@ const EditorParagraph = (props) => {
           <FoldButton
             collapse={collapse}
             setCollapse={setCollapse}
+            paragraphNumber={paragraphNumber}
           ></FoldButton>
           <div className={collapse ? "collapsedText" : "textBlock"}>
             <EditorBlock {...props} />
@@ -37,4 +46,9 @@ const EditorParagraph = (props) => {
   );
 };
 
-export { EditorParagraph };
+// Takes the global store pIdxList and makes every EditorParagraph have it as a prop.
+const mapStateToProps = (state) => {
+  return { collapsedIdxList: state.collapsedIdxList };
+};
+
+export default connect(mapStateToProps)(EditorParagraph);
