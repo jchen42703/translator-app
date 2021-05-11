@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { FoldButton } from "./FoldBlockButton";
+import { FoldButton } from "./FoldButton";
 import splitIntoParagraphs from "../utils/splitIntoParagraphs";
 
 /**
