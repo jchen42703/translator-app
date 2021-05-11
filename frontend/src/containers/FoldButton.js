@@ -32,6 +32,7 @@ export const FoldButton = (props) => {
       <button
         className={props.collapse ? "button-fold" : "button-no-fold"}
         onClick={handleClick}
+        contentEditable={false}
       ></button>
     </div>
   );
