@@ -2,7 +2,7 @@ import { collapseReducer } from "./collapse.reducer";
 import { createStore } from "redux";
 
 const initialState = {
-  pIdxList: [],
+  collapsedIdxList: [],
 };
 
 const store = createStore(collapseReducer, initialState);
