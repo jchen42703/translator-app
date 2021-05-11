@@ -38,6 +38,13 @@ sass --no-source-map --style=compressed frontend/src/styles/scss/styles.scss fro
 For dev (auto-updates):
 
 ```
+cd frontend
+yarn sass-watch
+```
+
+OR from root:
+
+```
 sass --no-source-map --style=compressed --watch frontend/src/styles/scss:frontend/src/styles/css
 ```
 
