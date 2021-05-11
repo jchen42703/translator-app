@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { FoldButton } from "./FoldBlockButton";
 import splitIntoParagraphs from "../utils/splitIntoParagraphs";
 
 /**
@@ -21,10 +22,20 @@ export const DisplayBlock = (props) => {
  * @returns an unordered list of DisplayBlocks to render
  */
 export const DisplayParagraph = (props) => {
+  const [collapse, setCollapse] = useState(false);
+
   return (
     <div className="line" data-line-number={props.lineNumber}>
       <div className="line-text">
-        <DisplayBlock text={props.text}></DisplayBlock>
+        <div className="block">
+          <FoldButton
+            collapse={collapse}
+            setCollapse={setCollapse}
+          ></FoldButton>
+          <div className={collapse ? "collapsedText" : "textBlock"}>
+            <DisplayBlock text={props.text}></DisplayBlock>
+          </div>
+        </div>
       </div>
     </div>
   );
