@@ -13,11 +13,25 @@ const EditorParagraph = (props) => {
   // whether or not to collapse the block
   const [collapse, setCollapse] = useState(false);
 
+  const { block, contentState } = props;
+  const paragraphNumber =
+    contentState
+      .getBlockMap()
+      .toList()
+      .findIndex((item) => item.key === block.key) + 1;
+
   return (
-    <div className="block">
-      <FoldButton collapse={collapse} setCollapse={setCollapse}></FoldButton>
-      <div className={collapse ? "collapsedText" : "textBlock"}>
-        <EditorBlock {...props} />
+    <div className="line" data-line-number={paragraphNumber}>
+      <div className="line-text">
+        <div className="block">
+          <FoldButton
+            collapse={collapse}
+            setCollapse={setCollapse}
+          ></FoldButton>
+          <div className={collapse ? "collapsedText" : "textBlock"}>
+            <EditorBlock {...props} />
+          </div>
+        </div>
       </div>
     </div>
   );
