@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { EditorBlock } from "draft-js";
 import { FoldButton } from "./FoldBlockButton";
 import "../styles/css/styles.css";
@@ -13,6 +13,8 @@ import "../styles/css/styles.css";
 const EditorParagraph = (props) => {
   // whether or not to collapse the block
   const [collapse, setCollapse] = useState(false);
+  // Takes the global store pIdxList and makes every EditorParagraph have it as a prop.
+  const collapsedIdxList = useSelector((state) => state.collapsedIdxList);
 
   const { block, contentState } = props;
   const paragraphNumber =
@@ -46,9 +48,4 @@ const EditorParagraph = (props) => {
   );
 };
 
-// Takes the global store pIdxList and makes every EditorParagraph have it as a prop.
-const mapStateToProps = (state) => {
-  return { collapsedIdxList: state.collapsedIdxList };
-};
-
-export default connect(mapStateToProps)(EditorParagraph);
+export default EditorParagraph;
