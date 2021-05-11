@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { FoldButton } from "./FoldBlockButton";
 import splitIntoParagraphs from "../utils/splitIntoParagraphs";
 
@@ -23,6 +24,15 @@ export const DisplayBlock = (props) => {
  */
 export const DisplayParagraph = (props) => {
   const [collapse, setCollapse] = useState(false);
+  // Takes the global store pIdxList and makes every DisplayParagraph have it as a prop.
+  const collapsedIdxList = useSelector((state) => state.collapsedIdxList);
+
+  useEffect(() => {
+    // Is paragraphNumber in list?
+    const mustCollapse = props.collapsedIdxList.includes(props.paragraphNumber);
+    // If yes, make sure it is collapsed. If no, make sure it is uncollapsed.
+    setCollapse(mustCollapse);
+  }, [props.collapsedIdxList, props.paragraphNumber, collapse]);
 
   return (
     <div className="line" data-line-number={props.lineNumber}>
