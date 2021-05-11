@@ -16,7 +16,7 @@ export const FoldButton = (props) => {
   const handleClick = () => {
     props.setCollapse(!props.collapse);
     // handles simultaneous collapse/uncollapsing of the editor and display paragraphs
-    if (props.collapse) {
+    if (!props.collapse) {
       dispatch(collapseToggleOn(props.paragraphNumber));
     } else {
       dispatch(collapseToggleOff(props.paragraphNumber));
