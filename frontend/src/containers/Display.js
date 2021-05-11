@@ -29,10 +29,10 @@ export const DisplayParagraph = (props) => {
 
   useEffect(() => {
     // Is paragraphNumber in list?
-    const mustCollapse = props.collapsedIdxList.includes(props.paragraphNumber);
+    const mustCollapse = collapsedIdxList.includes(props.paragraphNumber);
     // If yes, make sure it is collapsed. If no, make sure it is uncollapsed.
     setCollapse(mustCollapse);
-  }, [props.collapsedIdxList, props.paragraphNumber, collapse]);
+  }, [collapsedIdxList, props.paragraphNumber, collapse]);
 
   return (
     <div className="line" data-line-number={props.lineNumber}>

@@ -25,10 +25,10 @@ const EditorParagraph = (props) => {
 
   useEffect(() => {
     // Is paragraphNumber in list?
-    const mustCollapse = props.collapsedIdxList.includes(paragraphNumber);
+    const mustCollapse = collapsedIdxList.includes(paragraphNumber);
     // If yes, make sure it is collapsed. If no, make sure it is uncollapsed.
     setCollapse(mustCollapse);
-  }, [props.collapsedIdxList, paragraphNumber, collapse]);
+  }, [collapsedIdxList, paragraphNumber, collapse]);
 
   return (
     <div className="line" data-line-number={paragraphNumber}>
