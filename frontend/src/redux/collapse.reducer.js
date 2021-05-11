@@ -8,20 +8,20 @@ function collapseReducer(state, action) {
   switch (action.type) {
     // adds the index of the collapsed paragarph to the global state
     case "TOGGLE_ON": {
-      state.pIdxList.push(action.pIdx);
+      state.collapsedIdxList.push(action.collapseIdx);
       return {
-        pIdxList: state.pIdxList,
+        collapsedIdxList: state.collapsedIdxList,
       };
     }
 
     // removes the index of the collapsed paragraph of the global state
     case "TOGGLE_OFF": {
-      const filteredList = state.pIdxList.filter(
-        (item) => item !== action.pIdx
+      const filteredList = state.collapsedIdxList.filter(
+        (item) => item !== action.uncollapseIdx
       );
 
       return {
-        pIdxList: filteredList,
+        collapsedIdxList: filteredList,
       };
     }
 
