@@ -16,7 +16,7 @@
 
 This loads up the proxy server at PORT=5000 (proxy to 3000).
 
-1. Get the frontend server running:
+2. Get the frontend server running:
 
    ```
    cd frontend
@@ -26,22 +26,27 @@ This loads up the proxy server at PORT=5000 (proxy to 3000).
 
    This loads up the main app at PORT=3000.
 
-To convert the scss to css:
+## Compiling SCSS
+
+For a one-time compile:
+
+```
+// In ~/translator-app>
+sass --no-source-map --style=compressed frontend/src/styles/scss/styles.scss frontend/src/styles/css/styles.css
+```
+
+For dev (auto-updates):
 
 ```
 cd frontend
-node-sass src/styles/scss -o src/styles/css --output-style compressed
+yarn sass-watch
 ```
 
-- Uses SCSS and `include-media` for styling.
+OR from root:
 
-  - To use compile the scss, use `node-sass` and the command `node-sass styles/scss -o styles/css` in the root directory.
-    - To output compressed css, run `node-sass styles/scss -o styles/css --output-style compressed`.
-    - To remove duplicate css, use `postcss` and `cssnano`:
-      - `npm install cssnano --save-dev`
-      - `npm install postcss-cli --global`
-      - For Windows users, run `removeDuplicateCSS.bat` in command to produce a css file without duplicates. It's much slower than just using `node-sass` so this is only recommended for production.
-  - To install `include-media`, run `npm install include-media` for the user and then use the appropriate `@import` for `scss/vendor/s_include-media.scss`.
+```
+sass --no-source-map --style=compressed --watch frontend/src/styles/scss:frontend/src/styles/css
+```
 
 ## How does it work?
 
