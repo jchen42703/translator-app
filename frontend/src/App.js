@@ -1,13 +1,21 @@
-import Translator from "./containers/Translator";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import "./styles/css/styles.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import TranslationPage from "./views/TranslationPage";
 
 function App() {
   return (
     <Provider store={store}>
-      <h1 className="center-basic">Basic UI for Translation (Dev)</h1>
-      <Translator></Translator>
+      <Router>
+        <Switch>
+          <Route path="/">
+            <TranslationPage></TranslationPage>
+          </Route>
+          <Route path="/translate">
+            <TranslationPage></TranslationPage>
+          </Route>
+        </Switch>
+      </Router>
     </Provider>
   );
 }
